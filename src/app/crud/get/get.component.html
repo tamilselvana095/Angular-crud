@@ -1,0 +1,35 @@
+<div class="container">
+    
+    <h1>User List</h1>
+
+    <div class="search-container">
+        <input type="text" placeholder="Search by ID" class="search-input" [(ngModel)]="id" required #searchInput="ngModel">
+        <button class="search-btn" [disabled]="!searchInput.valid" (click)="search()">Go</button>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>
+                <td>
+                    <button class="btn-update" (click)="updateUser(user)">Update</button>
+                    <button class="btn-delete" (click)="deleteUser(user.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
