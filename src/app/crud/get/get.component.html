@@ -7,8 +7,9 @@
         <button class="search-btn" [disabled]="!searchInput.valid" (click)="search()">Go</button>
     </div>
 
-    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-
+    <div *ngIf="errorMessage;else elseBlock" class="error-message">{{ errorMessage }}</div>
+    
+<ng-template #elseBlock>
     <table class="user-table">
         <thead>
             <tr>
@@ -32,4 +33,5 @@
             </tr>
         </tbody>
     </table>
+</ng-template>
 </div>
